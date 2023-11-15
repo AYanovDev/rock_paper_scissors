@@ -1,1 +1,2 @@
 # rock_paper_scissors
+This is my first JS project for TOP. Here, I'll build a simple rock-paper-scissors game that will lack any GUI. The course promised me that I'll be able to make that GUI bit later, but for now - it is what it is, I guess
