@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let rock = "r";
+        let scissors = "s";
+        let paper = "p";
+        let AIchoise = ""
+        let computerChooses = function() {
+            let randomInt = Math.floor(Math.random() * 3) + 1;
+            if (randomInt === 1) {
+                AIchoise = "r";
+            } else if (randomInt === 2) {
+                AIchoise = "s";
+            } else {
+                AIchoise = "p";
+            }
+        }
+        let playerChoise = function() {
+            computerChooses();
+           let choise = prompt("Would you like to pick Rock (r) Paper (p) or Scissors (s)?: ")
+            if (choise.toLowerCase() === "r" || choise.toLowerCase() === "p" || choise.toLowerCase() === "s") {
+                if (choise === "r" && AIchoise === "p") {
+                    alert(`Bad luck! Paper beats Rock!`)
+                } else if (choise === "r" && AIchoise === "s") {
+                    alert("Ayyyy, you won! Rock beat Scissors!")
+                } else if (choise === "p" && AIchoise === "s") {
+                    alert(`Bad luck! Scissors beat Paper!`)
+                } else if (choise === "p" && AIchoise === "r") {
+                    alert("Ayyyy, you won! Paper beats Rock!")
+                } else if (choise === "s" && AIchoise === "r") {
+                    alert(`Bad luck! Rock beats Scissors!`)
+                }  else if (choise === "s" && AIchoise === "p") {
+                    alert("Ayyyy, you won! Scissors beat Paper!")
+                }
+                else { alert("That's a tie!") }
+            } else {
+                alert("I need a letter! R, P or S!")
+            }
+        }
+        playerChoise();
+    </script>
+</body>
+</html>
+
+
+<!--
+    It needs to be a classic rock-paper-scissors game.
+    In RPS, rock beats scissors, scissors beat paper, and paper beats
+    rock. 
+    I need some way for a computer to understand that rock > scissors, scissors > paper and paper > rock, which really doesn't make sence mathematically. I feel like I'm gonna 
+    need a bunch of either if/else statements, or switch cases.
+    
+    So the process is as follows:
+    1) The user makes a choise
+    2) computer is automatically triggered to make a choise too
+    3) the choises are then compared and the winner is announced
+-->
