@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
+    <button class="rock">Rock</button>
+    <button class="paper">Paper</button>
+    <button class="scissors">Scissors</button>
+    <div>
+        Scores:
+        <p class="pScore">0</p> | <p class="cScore">0</p>
+    </div>
     <script>
         let rock = "r";
         let scissors = "s";
@@ -21,35 +28,13 @@
                 AIchoise = "p";
             }
         }
-        let playerChoise = function() {
-            computerChooses();
-           let choise = prompt("Would you like to pick Rock (r) Paper (p) or Scissors (s)?: ")
-            if (choise.toLowerCase() === "r" || choise.toLowerCase() === "p" || choise.toLowerCase() === "s") {
-                if (choise === "r" && AIchoise === "p") {
-                    alert(`Bad luck! Paper beats Rock!`)
-                } else if (choise === "r" && AIchoise === "s") {
-                    alert("Ayyyy, you won! Rock beat Scissors!")
-                } else if (choise === "p" && AIchoise === "s") {
-                    alert(`Bad luck! Scissors beat Paper!`)
-                } else if (choise === "p" && AIchoise === "r") {
-                    alert("Ayyyy, you won! Paper beats Rock!")
-                } else if (choise === "s" && AIchoise === "r") {
-                    alert(`Bad luck! Rock beats Scissors!`)
-                }  else if (choise === "s" && AIchoise === "p") {
-                    alert("Ayyyy, you won! Scissors beat Paper!")
-                }
-                else { alert("That's a tie!") }
-            } else {
-                alert("I need a letter! R, P or S!")
-            }
-        }
-        // playerChoise();
+        
         let BestOf5 = function() {
+
             let playerScore = 0;
             let computerScore = 0;
-            for (let i = 0; i < 5; i++) {
-            computerChooses();
-           let choise = prompt("Would you like to pick Rock (r) Paper (p) or Scissors (s)?: ")
+
+            let compare = function () {
             if (choise.toLowerCase() === "r" || choise.toLowerCase() === "p" || choise.toLowerCase() === "s") {
                 if (choise === "r" && AIchoise === "p") {
                     alert(`Bad luck! Paper beats Rock!`)
@@ -72,20 +57,49 @@
                 }
                 else { 
                     alert("That's a tie!");
-                    i--; 
+                    // i--; 
                 }
-            } else {
-                alert("I need a letter! R, P or S!")
-                i--;
             }
-            console.log(playerScore);
-            console.log(computerScore);
-        }
-        if (playerScore > computerScore) {
+            if (playerScore + computerScore === 5) {
+            if (playerScore > computerScore) {
             alert(`You won! You're ${playerScore} vs computer's ${computerScore}`);
-        } else {
+            } else {
             alert(`You lose! Comuter : you - ${computerScore} : ${playerScore}`);
-        }
+            }
+            }
+        } 
+        
+            let choise = "";
+            let rockBtn = document.querySelector(".rock");
+            let paperBtn = document.querySelector(".paper");
+            let scissorsBtn = document.querySelector(".scissors");
+            let pScore = document.querySelector(".pScore");
+            let cScore = document.querySelector(".cScore");
+            rockBtn.addEventListener("click", function() {
+                choise = "r";
+                computerChooses();
+                compare();
+                pScore.textContent = playerScore;
+                cScore.textContent = computerScore;
+            });
+            paperBtn.addEventListener("click", function() {
+                choise = "p";
+                computerChooses();
+                compare();
+                pScore.textContent = playerScore;
+                cScore.textContent = computerScore;
+            });
+            scissorsBtn.addEventListener("click", function() {
+                choise = "s";
+                computerChooses();
+                compare();
+                pScore.textContent = playerScore;
+                cScore.textContent = computerScore;
+            });
+            
+            
+            
+        
     }
         BestOf5();
     </script>
@@ -105,3 +119,29 @@
     2) computer is automatically triggered to make a choise too
     3) the choises are then compared and the winner is announced
 -->
+
+<!--The following is some legacy code to get the game to play out only once-->
+
+// let playerChoise = function() {
+    //     computerChooses();
+    //    let choise = prompt("Would you like to pick Rock (r) Paper (p) or Scissors (s)?: ")
+    //     if (choise.toLowerCase() === "r" || choise.toLowerCase() === "p" || choise.toLowerCase() === "s") {
+    //         if (choise === "r" && AIchoise === "p") {
+    //             alert(`Bad luck! Paper beats Rock!`)
+    //         } else if (choise === "r" && AIchoise === "s") {
+    //             alert("Ayyyy, you won! Rock beat Scissors!")
+    //         } else if (choise === "p" && AIchoise === "s") {
+    //             alert(`Bad luck! Scissors beat Paper!`)
+    //         } else if (choise === "p" && AIchoise === "r") {
+    //             alert("Ayyyy, you won! Paper beats Rock!")
+    //         } else if (choise === "s" && AIchoise === "r") {
+    //             alert(`Bad luck! Rock beats Scissors!`)
+    //         }  else if (choise === "s" && AIchoise === "p") {
+    //             alert("Ayyyy, you won! Scissors beat Paper!")
+    //         }
+    //         else { alert("That's a tie!") }
+    //     } else {
+    //         alert("I need a letter! R, P or S!")
+    //     }
+    // }
+    // // playerChoise();
