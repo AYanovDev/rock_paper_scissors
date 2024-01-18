@@ -43,7 +43,51 @@
                 alert("I need a letter! R, P or S!")
             }
         }
-        playerChoise();
+        // playerChoise();
+        let BestOf5 = function() {
+            let playerScore = 0;
+            let computerScore = 0;
+            for (let i = 0; i < 5; i++) {
+            computerChooses();
+           let choise = prompt("Would you like to pick Rock (r) Paper (p) or Scissors (s)?: ")
+            if (choise.toLowerCase() === "r" || choise.toLowerCase() === "p" || choise.toLowerCase() === "s") {
+                if (choise === "r" && AIchoise === "p") {
+                    alert(`Bad luck! Paper beats Rock!`)
+                    computerScore = computerScore + 1;
+                } else if (choise === "r" && AIchoise === "s") {
+                    alert("Ayyyy, you won! Rock beat Scissors!")
+                    playerScore = playerScore + 1;
+                } else if (choise === "p" && AIchoise === "s") {
+                    alert(`Bad luck! Scissors beat Paper!`)
+                    computerScore = computerScore + 1;
+                } else if (choise === "p" && AIchoise === "r") {
+                    alert("Ayyyy, you won! Paper beats Rock!")
+                    playerScore = playerScore + 1;
+                } else if (choise === "s" && AIchoise === "r") {
+                    alert(`Bad luck! Rock beats Scissors!`)
+                    computerScore = computerScore + 1;
+                }  else if (choise === "s" && AIchoise === "p") {
+                    alert("Ayyyy, you won! Scissors beat Paper!")
+                    playerScore = playerScore + 1;
+                }
+                else { 
+                    alert("That's a tie!");
+                    i--; 
+                }
+            } else {
+                alert("I need a letter! R, P or S!")
+                i--;
+            }
+            console.log(playerScore);
+            console.log(computerScore);
+        }
+        if (playerScore > computerScore) {
+            alert(`You won! You're ${playerScore} vs computer's ${computerScore}`);
+        } else {
+            alert(`You lose! Comuter : you - ${computerScore} : ${playerScore}`);
+        }
+    }
+        BestOf5();
     </script>
 </body>
 </html>
